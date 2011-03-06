@@ -25,11 +25,15 @@ set backspace=indent,eol,start
 set laststatus=2
 
 " Requires v7.3
-if version >= 730
+"if version >= 730
     set relativenumber
     set undofile
     set colorcolumn=85
-endif
+"endif
+
+" Center line on search
+map N Nzz
+map n nzz
 
 nnoremap / /\v
 vnoremap / /\v
