@@ -78,8 +78,8 @@ let filetype_m='objc'
 
 " The following are from http://items.sjbach.com/319/configuring-vim-right
 set hidden
-nnoremap '`
-nnoremap `'
+nnoremap ' `
+nnoremap ` '
 set history=1000
 runtime macros/matchit.vim
 set wildmenu
