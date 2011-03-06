@@ -23,8 +23,13 @@ set cursorline
 set ttyfast
 set backspace=indent,eol,start
 set laststatus=2
-set relativenumber
-set undofile
+
+" Requires v7.3
+if version >= 730
+    set relativenumber
+    set undofile
+    set colorcolumn=85
+endif
 
 nnoremap / /\v
 vnoremap / /\v
@@ -37,7 +42,6 @@ vnoremap <tab> %
 set wrap
 set textwidth=79
 set formatoptions=qrn1
-set colorcolumn=85
 
 nnoremap <up> <nop>
 nnoremap <down> <nop>
