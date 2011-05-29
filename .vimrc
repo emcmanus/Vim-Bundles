@@ -122,3 +122,9 @@ inoremap jh <ESC>:w<cr>
 
 " Scratch
 nnoremap <leader><tab> :Scratch<cr>
+
+" Clang auto complete
+let g:clang_use_library=1
+let g:clang_library_path='/usr/local/Cellar/llvm/2.9/lib/'
+let g:clang_periodic_quickfix=1
+
