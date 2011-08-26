@@ -67,7 +67,7 @@ let colors_name = "xcode_black"
 
 " General colors
 hi Normal           guifg=#f6f3e8     guibg=black       gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
-hi NonText          guifg=#585858     guibg=black       gui=NONE      ctermfg=black       ctermbg=NONE        cterm=NONE
+hi NonText          guifg=#919191     guibg=black       gui=NONE      ctermfg=black       ctermbg=NONE        cterm=NONE
 
 hi Cursor           guifg=black       guibg=white       gui=NONE      ctermfg=black       ctermbg=white       cterm=reverse
 hi LineNr           guifg=#3D3D3D     guibg=black       gui=NONE      ctermfg=darkgray    ctermbg=NONE        cterm=NONE
@@ -116,8 +116,8 @@ hi Constant         guifg=#99CC99     guibg=NONE        gui=NONE      ctermfg=cy
 
 hi Identifier       guifg=#FFFFFF     guibg=NONE        gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 hi Function         guifg=#FF7D00     guibg=NONE        gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
-hi Type             guifg=#585858     guibg=NONE        gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
-hi Statement        guifg=#585858     guibg=NONE        gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi Type             guifg=#919191     guibg=NONE        gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
+hi Statement        guifg=#919191     guibg=NONE        gui=NONE      ctermfg=NONE        ctermbg=NONE        cterm=NONE
 
 hi Special          guifg=#E18964     guibg=NONE        gui=NONE      ctermfg=white       ctermbg=NONE        cterm=NONE
 hi Delimiter        guifg=#00A0A0     guibg=NONE        gui=NONE      ctermfg=cyan        ctermbg=NONE        cterm=NONE
