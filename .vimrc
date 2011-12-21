@@ -34,7 +34,7 @@ Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'emcmanus/snipmate.vim'
 Bundle 'msanders/cocoa.vim'
 Bundle 'tpope/vim-rails'
-Bundle 'lokaltog/vim-easymotion'
+Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tpope/vim-fugitive'
 Bundle 'sjl/gundo.vim'
 Bundle 'scrooloose/nerdcommenter'
@@ -47,14 +47,13 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-markdown'
 Bundle 'mileszs/ack.vim'
 Bundle 'emcmanus/vim-checkbox'
-
+Bundle 'tomtom/tcomment_vim'
 Bundle 'pangloss/vim-javascript'
 
 " Vim-scripts.org
 " To find the proper name, search https://github.com/vim-scripts/repositories
 Bundle 'DrawIt'
 Bundle 'cecutil'
-Bundle 'TComment'
 Bundle 'matchit.zip'
 Bundle 'YankRing.vim'
 Bundle 'Rainbow-Parenthesis'
@@ -157,7 +156,7 @@ set background=dark
 colorscheme xcode_black
 
 " Expand split width
-nnoremap <leader>m 40<C-w>>
+nnoremap <leader>m 15<C-w>>
 
 let filetype_m='objc'
 
