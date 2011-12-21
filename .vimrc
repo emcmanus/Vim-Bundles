@@ -1,3 +1,7 @@
+"
+" This .vimrc is automatically sourced on save. For most changes, you won't need
+" to restart vim.
+" 
 
 " Vundle bundles
 " https://github.com/gmarik/vundle
@@ -21,8 +25,8 @@ call vundle#rc()
 
 filetype plugin indent on
 
-" let Vundle manage Vundle
-" required!
+" Let Vundle manage Vundle
+" Required!
 Bundle 'gmarik/vundle'
 
 " Github Bundles
@@ -40,27 +44,21 @@ Bundle 'duff/vim-scratch'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-markdown'
 Bundle 'mileszs/ack.vim'
-Bundle 'ervandew/supertab'
-Bundle 'majutsushi/tagbar'
-Bundle 'skammer/vim-css-color'
-" Was this ever working? (Think it was, but seems to break omnicomplete elsewhere)
-"Bundle 'Rip-Rip/clang_complete'
-" Current version mangles most of my leader keys
-"Bundle 'astashov/vim-ruby-debugger'
+Bundle 'emcmanus/vim-checkbox'
+
+Bundle 'pangloss/vim-javascript'
 
 " Vim-scripts.org
-" To find proper name search https://github.com/vim-scripts/repositories
+" To find the proper name, search https://github.com/vim-scripts/repositories
 Bundle 'DrawIt'
 Bundle 'cecutil'
-Bundle 'xmledit'
 Bundle 'TComment'
 Bundle 'matchit.zip'
 Bundle 'YankRing.vim'
 Bundle 'Rainbow-Parenthesis'
-
-" Ruby Debugger
-"let g:ruby_debugger_progname = 'mvim'
+Bundle 'cmdalias.vim'
 
 " RagTag
 let g:ragtag_global_maps=1
@@ -68,7 +66,7 @@ let g:ragtag_global_maps=1
 " EasyMotion
 let g:EasyMotion_leader_key=''
 
-" Tagbar - hotkey F6
+" Tagbar - hotkey `
 nnoremap <silent> ` :TagbarToggle<CR>
 let g:tagbar_autofocus=1 " Only set after opening
 let g:tagbar_autoclose=1 " Close after jumping
@@ -76,16 +74,15 @@ let g:tagbar_autoclose=1 " Close after jumping
 " Vim-Ruby Complete
 let g:rubycomplete_rails=1
 
-" Clang auto complete
-"let g:clang_use_library=1
-"let g:clang_library_path='/usr/local/Cellar/llvm/2.9/lib/'
-"let g:clang_periodic_quickfix=1
+let ruby_space_errors=1
+let c_space_errors=1
 
-" SuperTab - pick completion mode based on current context
-"let g:SuperTabDefaultCompletionType="context"
+" Source vimrc on save
+au! BufWritePost .vimrc source %
+
 
 "
-" The following are from http://stevelosh.com/blog/2010/09/coming-home-to-vim/#making-vim-more-useful
+" Great defaults: http://stevelosh.com/blog/2010/09/coming-home-to-vim/#making-vim-more-useful
 "
 
 let mapleader = ","
@@ -94,10 +91,10 @@ set nocompatible
 
 set modelines=0
 
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
+set smarttab
 
 set encoding=utf-8
 set scrolloff=3
@@ -110,11 +107,9 @@ set backspace=indent,eol,start
 set laststatus=2
 
 " Requires v7.3
-"if version >= 730
-    set relativenumber
-    set undofile
-    set colorcolumn=85
-"endif
+set relativenumber
+set undofile
+set colorcolumn=85
 
 " Center line on search
 map N Nzz
@@ -148,27 +143,26 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
+" Awesome, fast recursive text search of current directory
 nnoremap <leader>a :Ack -i 
 
 " JJ brings you back to normal mode
 inoremap jj <ESC>
 
-" Open a new vertical split and switch over to it
+" Create vertical split and give it focus
 nnoremap <leader>w <C-w>v<C-w>l
 
 " http://blog.infinitered.com/entries/show/8
 set background=dark
 colorscheme xcode_black
 
-" The following are my macros...
+" Expand split width
 nnoremap <leader>m 40<C-w>>
 
 let filetype_m='objc'
 
 " The following are from http://items.sjbach.com/319/configuring-vim-right
 set hidden
-"nnoremap ' `
-"nnoremap ` '
 set history=1000
 runtime macros/matchit.vim
 set wildmenu
@@ -195,15 +189,15 @@ set incsearch	" search dynamically while typing
 set shortmess=atI
 
 
-" Open vertical split, display PeepOpen
+" Create vertical split, give it focus, fire PeepOpen (cmd+t)
 nnoremap <leader>t <C-w>v<C-w>l:PeepOpen<cr>
 
 " Buffer cycle
 nnoremap <C-j> :bnext<cr>
 nnoremap <C-k> :bprevious<cr>
 
-" Quick save
+" Exit insert mode and save current buffer, great for tight edit/test loops
 inoremap jh <ESC>:w<cr>
 
-" Scratch
+" Quick scratch buffer
 nnoremap <leader><tab> :Scratch<cr>
