@@ -5,3 +5,4 @@ tmp/*
 .netrwhist
 .VimballRecord
 bundle/*
+sessions/*
