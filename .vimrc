@@ -39,7 +39,6 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'tpope/vim-fugitive'
 Bundle 'sjl/gundo.vim'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
 Bundle 'xolox/vim-session'
 Bundle 'duff/vim-scratch'
 Bundle 'vim-ruby/vim-ruby'
@@ -50,36 +49,109 @@ Bundle 'mileszs/ack.vim'
 Bundle 'emcmanus/vim-checkbox'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'pangloss/vim-javascript'
+Bundle 'scrooloose/syntastic'
+Bundle 'kien/ctrlp.vim'
+Bundle 'othree/html5.vim'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'mhinz/vim-startify'
+Bundle 'leafgarland/typescript-vim'
+Bundle 'xolox/vim-misc'
+Bundle 'groenewege/vim-less'
+
+" To get YCM to build had to first uninstall brew's Python (I later reinstalled).
+" See https://github.com/Valloric/YouCompleteMe/issues/18
+"Bundle 'Valloric/YouCompleteMe'
+
+" Transparently make gui color schemes compatible with terminal vim
+Bundle 'godlygeek/csapprox'
 
 " Vim-scripts.org
 " To find the proper name, search https://github.com/vim-scripts/repositories
 Bundle 'DrawIt'
 Bundle 'cecutil'
 Bundle 'matchit.zip'
+Bundle 'php.vim'
 Bundle 'YankRing.vim'
 Bundle 'Rainbow-Parenthesis'
 Bundle 'cmdalias.vim'
+Bundle 'dbext.vim'
+Bundle 'psql.vim'
+Bundle 'R.vim--Nijs'
+Bundle 'csv.vim'
+
+" *.ts extension
+au BufNewFile,BufRead *.ts set filetype=typescript
+
+" Disable session autosave
+let g:session_autosave = 'no'
+
+" Most plugins expect bash, not Fish
+set shell=bash
+
+" CtrlP
+let g:ctrlp_map = '<c-i>'
+" Allow ctrlp to replace netrw window
+let g:ctrlp_reuse_window = 'netrw\|help\|quickfix'
+let g:ctrlp_max_files = 5000
+" Root directory markers and ignore patterns from peepopen
+let g:ctrlp_root_markers = ['.git', '.hg', 'Rakefile', 'Makefile', 'README\.?.*', 'build\.xml', '.*\.xcodeproj', '.*\.bbprojectd']
+unlet! g:ctrlp_custom_ignore
+" Note pipes need to be escaped per https://github.com/kien/ctrlp.vim/issues/58
+let g:ctrlp_custom_ignore = {
+      \ 'file': '\v(\.git|\.hg|.*\.xcodeproj|.*\.bbprojectd)$',
+      \ 'dir': 'node_modules\|\.git\|\.hg\|\.svn\|\.sass-cache\|build\|tmp\|log\|vendor\/(rails\|gems\|plugins)\/\|proxy_cache',
+      \ }
+
+" Note fold settings are specified in ftplugin/text
+
+" Change insert mode cursor shape
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+" HTML Syntax highlighting in erb files
+autocmd BufRead,BufNewFile *.erb set filetype=eruby.html
+
+" YankRing
+let g:yankring_warn_on_truncate=0
 
 " RagTag
 let g:ragtag_global_maps=1
 
 " EasyMotion
-let g:EasyMotion_leader_key=''
+let g:EasyMotion_leader_key='`'
+
+" DBExt Profiles
+let g:dbext_default_profile_yardsale_development = 'type=PGSQL:user=:passwd=:dbname=yardsale_development'
+let g:dbext_default_profile = 'yardsale_development'
 
 " Tagbar - hotkey `
-nnoremap <silent> ` :TagbarToggle<CR>
-let g:tagbar_autofocus=1 " Only set after opening
-let g:tagbar_autoclose=1 " Close after jumping
+"nnoremap <silent> ` :TagbarToggle<CR>
+"let g:tagbar_autofocus=1 " Only set after opening
+"let g:tagbar_autoclose=1 " Close after jumping
 
 " Vim-Ruby Complete
-let g:rubycomplete_rails=1
+"let g:rubycomplete_rails=1
 
 let ruby_space_errors=1
 let c_space_errors=1
 
+" Use pbcopy/pbpaste for shared clipboard
+set clipboard=unnamed
+
+" Cleanup trailing whitespace
+:nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
 " Source vimrc on save
 au! BufWritePost .vimrc source %
 
+" Disable error and visual bells
+set noerrorbells visualbell t_vb=
+
+" Remove toolbar in MacVim
+if has("gui_running")
+  set guioptions=-t
+endif
 
 "
 " Great defaults: http://stevelosh.com/blog/2010/09/coming-home-to-vim/#making-vim-more-useful
@@ -109,7 +181,8 @@ set laststatus=2
 " Requires v7.3
 set relativenumber
 set undofile
-set colorcolumn=85
+" Git commit message width:
+set colorcolumn=72
 
 " Center line on search
 map N Nzz
@@ -127,15 +200,6 @@ set wrap
 set textwidth=79
 set formatoptions=qrn1
 
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-
 nnoremap j gj
 nnoremap k gk
 
@@ -144,17 +208,25 @@ nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
 " Awesome, fast recursive text search of current directory
-nnoremap <leader>a :Ack -i 
+nnoremap <leader>a :Ack -i --type=nohtml 
 
 " JJ brings you back to normal mode
 inoremap jj <ESC>
+
+" Reduce timeout after <ESC> is recvd, helpful in terminal mode
+set ttimeout
+set ttimeoutlen=20
+set notimeout
+
+" Don't update screen when executing macros
+set lazyredraw
 
 " Create vertical split and give it focus
 nnoremap <leader>w <C-w>v<C-w>l
 
 " http://blog.infinitered.com/entries/show/8
 set background=dark
-colorscheme xcode_black
+colorscheme vivid_black_terminal
 
 " Expand split width
 nnoremap <leader>m 15<C-w>>
@@ -188,15 +260,15 @@ set incsearch	" search dynamically while typing
 
 set shortmess=atI
 
-
-" Create vertical split, give it focus, fire PeepOpen (cmd+t)
-nnoremap <leader>t <C-w>v<C-w>l:PeepOpen<cr>
+" Create vertical split, give it focus, fire CtrlP
+nnoremap <C-t> <C-w>v<C-w>l<cr>
 
 " Buffer cycle
 nnoremap <C-j> :bnext<cr>
 nnoremap <C-k> :bprevious<cr>
 
 " Exit insert mode and save current buffer, great for tight edit/test loops
+inoremap kj <ESC>:w<cr>
 inoremap jh <ESC>:w<cr>
 
 " Quick scratch buffer
