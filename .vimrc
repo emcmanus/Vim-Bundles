@@ -9,76 +9,83 @@
 " Some bundles depend on ctags: `brew install ctags`
 "
 " Brief Vundle Help
-"   :BundleList          - list configured bundles
-"   :BundleInstall(!)    - install(update) bundles
-"   :BundleSearch(!) foo - search(or refresh cache first) for foo
-"   :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"   :PluginList          - list configured bundles
+"   :PluginInstall(!)    - install(update) bundles
+"   :PluginSearch(!) foo - search(or refresh cache first) for foo
+"   :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles
 "
 " See :h vundle for more details
 " Comments after Bundle command are not allowed
 
 " Required
+set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 filetype plugin indent on
 
 " Let Vundle manage Vundle
 " Required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " Github Bundles
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'emcmanus/snipmate.vim'
-Bundle 'msanders/cocoa.vim'
-Bundle 'tpope/vim-rails'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'tpope/vim-fugitive'
-Bundle 'sjl/gundo.vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'xolox/vim-session'
-Bundle 'duff/vim-scratch'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-ragtag'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-markdown'
-Bundle 'mileszs/ack.vim'
-Bundle 'emcmanus/vim-checkbox'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'scrooloose/syntastic'
-Bundle 'kien/ctrlp.vim'
-Bundle 'othree/html5.vim'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'mhinz/vim-startify'
-Bundle 'leafgarland/typescript-vim'
-Bundle 'xolox/vim-misc'
-Bundle 'groenewege/vim-less'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'emcmanus/snipmate.vim'
+Plugin 'msanders/cocoa.vim'
+Plugin 'tpope/vim-rails'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'sjl/gundo.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'xolox/vim-session'
+Plugin 'duff/vim-scratch'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-markdown'
+Plugin 'mileszs/ack.vim'
+Plugin 'emcmanus/vim-checkbox'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'scrooloose/syntastic'
+Plugin 'kien/ctrlp.vim'
+Plugin 'othree/html5.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'mhinz/vim-startify'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'xolox/vim-misc'
+Plugin 'groenewege/vim-less'
 
 " To get YCM to build had to first uninstall brew's Python (I later reinstalled).
 " See https://github.com/Valloric/YouCompleteMe/issues/18
 "Bundle 'Valloric/YouCompleteMe'
 
 " Transparently make gui color schemes compatible with terminal vim
-Bundle 'godlygeek/csapprox'
+Plugin 'godlygeek/csapprox'
 
 " Vim-scripts.org
 " To find the proper name, search https://github.com/vim-scripts/repositories
-Bundle 'DrawIt'
-Bundle 'cecutil'
-Bundle 'matchit.zip'
-Bundle 'php.vim'
-Bundle 'YankRing.vim'
-Bundle 'Rainbow-Parenthesis'
-Bundle 'cmdalias.vim'
-Bundle 'dbext.vim'
-Bundle 'psql.vim'
-Bundle 'R.vim--Nijs'
-Bundle 'csv.vim'
+Plugin 'DrawIt'
+Plugin 'cecutil'
+Plugin 'matchit.zip'
+Plugin 'php.vim'
+Plugin 'YankRing.vim'
+Plugin 'Rainbow-Parenthesis'
+Plugin 'cmdalias.vim'
+Plugin 'dbext.vim'
+Plugin 'psql.vim'
+Plugin 'R.vim--Nijs'
+Plugin 'csv.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" End of vundle config
 
 " *.ts extension
 au BufNewFile,BufRead *.ts set filetype=typescript
@@ -158,8 +165,6 @@ endif
 "
 
 let mapleader = ","
-
-set nocompatible
 
 set modelines=0
 
