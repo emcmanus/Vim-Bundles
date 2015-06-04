@@ -58,6 +58,7 @@ Bundle 'mhinz/vim-startify'
 Bundle 'leafgarland/typescript-vim'
 Bundle 'xolox/vim-misc'
 Bundle 'groenewege/vim-less'
+Bundle 'andreimaxim/vim-io'
 
 " To get YCM to build had to first uninstall brew's Python (I later reinstalled).
 " See https://github.com/Valloric/YouCompleteMe/issues/18
@@ -83,6 +84,9 @@ Bundle 'csv.vim'
 " *.ts extension
 au BufNewFile,BufRead *.ts set filetype=typescript
 
+" *.io extension
+au BufNewFile,BufRead *.io set filetype=io
+
 " Disable session autosave
 let g:session_autosave = 'no'
 
@@ -100,7 +104,7 @@ unlet! g:ctrlp_custom_ignore
 " Note pipes need to be escaped per https://github.com/kien/ctrlp.vim/issues/58
 let g:ctrlp_custom_ignore = {
       \ 'file': '\v(\.git|\.hg|.*\.xcodeproj|.*\.bbprojectd)$',
-      \ 'dir': 'node_modules\|\.git\|\.hg\|\.svn\|\.sass-cache\|build\|tmp\|log\|vendor\/(rails\|gems\|plugins)\/\|proxy_cache',
+      \ 'dir': 'node_modules\|bower_components\|dist\|\.git\|\.hg\|\.svn\|\.sass-cache\|build\|tmp\|log\|vendor\/(rails\|gems\|plugins)\/\|proxy_cache',
       \ }
 
 " Note fold settings are specified in ftplugin/text
@@ -152,6 +156,9 @@ set noerrorbells visualbell t_vb=
 if has("gui_running")
   set guioptions=-t
 endif
+
+" Use Vim as man's pager
+let $PAGER=''
 
 "
 " Great defaults: http://stevelosh.com/blog/2010/09/coming-home-to-vim/#making-vim-more-useful
