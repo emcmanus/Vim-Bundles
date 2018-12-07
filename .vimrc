@@ -56,6 +56,8 @@ Plugin 'xolox/vim-misc'
 Plugin 'groenewege/vim-less'
 Plugin 'andreimaxim/vim-io'
 Plugin 'fatih/vim-go'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'vim-scripts/AnsiEsc.vim'
 
 " tpope the man!
 Plugin 'tpope/vim-fugitive'
@@ -78,7 +80,6 @@ Plugin 'DrawIt'
 Plugin 'cecutil'
 Plugin 'matchit.zip'
 Plugin 'php.vim'
-Plugin 'YankRing.vim'
 Plugin 'Rainbow-Parenthesis'
 Plugin 'cmdalias.vim'
 Plugin 'dbext.vim'
@@ -118,11 +119,17 @@ let g:ctrlp_custom_ignore = {
       \ 'dir': 'node_modules\|bower_components\|dist\|\.git\|\.hg\|\.svn\|\.sass-cache\|build\|tmp\|log\|vendor\/(rails\|gems\|plugins)\/\|proxy_cache',
       \ }
 
-" Note fold settings are specified in ftplugin/text
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+" Per https://github.com/junegunn/vim-easy-align
 
 " Change insert mode cursor shape
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+" Note fold settings are specified in ftplugin/text
 
 " HTML Syntax highlighting in erb files
 autocmd BufRead,BufNewFile *.erb set filetype=eruby.html
@@ -150,9 +157,6 @@ let g:dbext_default_profile = 'yardsale_development'
 
 let ruby_space_errors=1
 let c_space_errors=1
-
-" Use pbcopy/pbpaste for shared clipboard
-set clipboard=unnamed
 
 " Cleanup trailing whitespace
 :nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
